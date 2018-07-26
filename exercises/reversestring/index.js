@@ -14,4 +14,6 @@ function reverse(str) {
     return reversed;
 }
 
+reverse('asdf');
+
 module.exports = reverse;
