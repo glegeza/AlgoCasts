@@ -16,4 +16,10 @@ function palindrome(str) {
     return true;
 }
 
+// function palindrome(str) {
+//     return str.split('').every((v, i) => {
+//         return v === str[str.length - 1 - i];
+//     });
+// }
+
 module.exports = palindrome;
