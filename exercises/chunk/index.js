@@ -8,6 +8,26 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-function chunk(array, size) {}
+// function chunk(array, size) {
+//     let newArr = [[]];
+//     for (let elm of array) {
+//         if (newArr[newArr.length - 1].length === size) {
+//             newArr.push([]);
+//         } 
+//         newArr[newArr.length - 1].push(elm);
+//     }
+//     return newArr;
+// }
+
+function chunk(array, size) {
+    const chunked = [];
+    let start = 0;
+    while (start < array.length) {
+        let nextChunk = Math.min(start + size, array.length);
+        chunked.push(array.slice(start, nextChunk));
+        start = nextChunk;
+    }
+    return chunked;
+}
 
 module.exports = chunk;
