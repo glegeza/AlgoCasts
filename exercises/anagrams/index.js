@@ -8,32 +8,24 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function isAlpha(cc) {
-    return ((cc>47 && cc<58) || (cc>64 && cc<91) || (cc>96 && cc<123));
+function getMap(map, str, idx) {
+    let lower = str.replace(/[^\w]/g, "").toLowerCase();
+    for (let c of lower) {
+        if (!map[c]) {
+            map[c] = [0, 0];
+        }
+        map[c][idx] += 1;
+    }
+    return map;
 }
 
 function anagrams(stringA, stringB) {
     const map = {};
-    let lowerA = stringA.replace(/[^\w]/g, "").toLowerCase();
-    let lowerB = stringB.replace(/[^\w]/g, "").toLowerCase();
+    let lowerA = getMap(map, stringA, 0);
+    let lowerB = getMap(map, stringB, 1);
     if (lowerA.length !== lowerB.length) {
         return false;
     }
-
-    for (let c of lowerA) {
-        if (!map[c]) {
-            map[c] = [0, 0];
-        }
-        map[c][0] += 1;
-    }
-    for (let c of lowerB) {
-        if (!map[c]) {
-            map[c] = [0, 0];
-        }
-        map[c][1] += 1;
-    }
-
-    console.log(map);
 
     for (let c in map) {
         if (map[c][0] !== map[c][1]) {
