@@ -14,6 +14,16 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n, row=0) {
+    if (row === n) {
+        return;
+    }
+    const numSpaces = n - 1 - row;
+    const numBlocks = n * 2 - 1 - numSpaces * 2;
+    const spaces = Array(numSpaces + 1).join(' ');
+    const blocks = Array(numBlocks + 1).join('#');
+    console.log(spaces + blocks + spaces);
+    pyramid(n, row + 1);
+}
 
 module.exports = pyramid;
